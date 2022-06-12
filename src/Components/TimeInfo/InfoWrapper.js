@@ -20,10 +20,16 @@ const FlexContainer = styled.div`
   margin-top: 10px;
 `
 
-function InfoWrapper(props) {
+function InfoWrapper() {
   const [timeData, changeData] = useState(null)
+
   const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-  const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+  const time = timeData && timeData.utc_datetime.slice(11, 16)
+  const day = timeData && weekDay[timeData.day_of_week]
+  const month = timeData && monthArr[parseInt(timeData.utc_datetime.slice(5, 7) - 1, 10)]
+  const dayOfMonth = timeData && parseInt(timeData.utc_datetime.slice(5, 7), 10)
 
   useEffect(() => {
     fetch('https://worldtimeapi.org/api/timezone/Europe/Warsaw')
@@ -37,26 +43,11 @@ function InfoWrapper(props) {
     <>
       {timeData && (
         <WrapperInfo>
-          <Time
-            time={
-              timeData.utc_datetime[11] +
-              timeData.utc_datetime[12] +
-              timeData.utc_datetime[13] +
-              timeData.utc_datetime[14] +
-              timeData.utc_datetime[15]
-            }
-            mode={props.mode}
-          />
+          <Time>{time}</Time>
           <FlexContainer>
-            <Day day={weekDay[timeData.day_of_week]} mode={props.mode}></Day>
-            <Month
-              month={month[parseInt(timeData.utc_datetime[5] + timeData.utc_datetime[6], 10)]}
-              mode={props.mode}
-            ></Month>
-            <DayOfMonth
-              day={parseInt(timeData.utc_datetime[5] + timeData.utc_datetime[6], 10)}
-              mode={props.mode}
-            ></DayOfMonth>
+            <Day>{day}</Day>
+            <Month>{month}</Month>
+            <DayOfMonth>{dayOfMonth}</DayOfMonth>
           </FlexContainer>
         </WrapperInfo>
       )}

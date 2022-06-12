@@ -1,13 +1,10 @@
 import styled from 'styled-components'
 
-const InfoMonth = styled.div`
-  color: ${props => (props.mode ? 'black' : 'white')};
+const Month = styled.div`
+  color: ${props => (props.theme.mode ? 'black' : 'white')};
   transition: all 0.6s;
-  border-${props => (props.mode ? 'top' : 'bottom')}: 3px solid ${props => (props.mode ? 'black' : 'white')};
+  border-${props => (props.theme.mode ? 'top' : 'bottom')}: 3px solid ${props =>
+  props.theme.mode ? 'black' : 'white'};
 `
-
-function Month(props) {
-  return <InfoMonth mode={props.mode}>{props.month}</InfoMonth>
-}
 
 export default Month

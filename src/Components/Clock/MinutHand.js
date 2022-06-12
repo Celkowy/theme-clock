@@ -13,7 +13,7 @@ const slide = keyframes`
 const MinuteHand = styled.div`
   width: 2px;
   height: 60px;
-  background-color: ${props => (props.mode ? 'white' : 'black')};
+  background-color: ${props => (props.theme.mode ? 'white' : 'black')};
   position: absolute;
   top: 50%;
   left: 50%;

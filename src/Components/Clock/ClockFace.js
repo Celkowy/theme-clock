@@ -7,18 +7,19 @@ const StyledFace = styled.div`
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-color: ${props => (props.mode ? 'black' : 'white')};
+  background-color: ${props => (props.theme.mode ? 'black' : 'white')};
   position: relative;
   transition: all 0.6s cubic-bezier(0.99, 0, 0.52, 1);
 `
 
-function ClockFace(props) {
+function ClockFace() {
   return (
-    <StyledFace mode={props.mode}>
-      <SecondHand mode={props.mode} />
-      <MinuteHand mode={props.mode} />
-      <HourHand mode={props.mode} />
+    <StyledFace>
+      <SecondHand />
+      <MinuteHand />
+      <HourHand />
     </StyledFace>
   )
 }
+
 export default ClockFace

@@ -3,11 +3,11 @@ import SwitchButton from './Components/SwitchButton'
 import Wrapper from './Wrapper'
 import InfoWrapper from './Components/TimeInfo/InfoWrapper'
 import React, { useState } from 'react'
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: ${props => (props.mode ? 'white' : 'black')};
+    background-color: ${props => (props.theme.mode ? 'white' : 'black')};
     transition: all 0.6s cubic-bezier(.99,0,.52,1);
     font-family: 'Mulish', sans-serif;
   }
@@ -16,19 +16,25 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   const [mode, switchMode] = useState(true)
 
+  const theme = {
+    mode: mode,
+  }
+
   return (
     <Wrapper>
-      <GlobalStyle mode={mode} />
-      <SwitchButton
-        onClick={() => {
-          switchMode(!mode)
-        }}
-        mode={mode}
-      >
-        {mode ? 'Dark mode' : 'Light mode'}
-      </SwitchButton>
-      <ClockFace mode={mode} />
-      <InfoWrapper mode={mode} />
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <SwitchButton
+          onClick={() => {
+            switchMode(!mode)
+          }}
+          mode={mode}
+        >
+          {mode ? 'Dark mode' : 'Light mode'}
+        </SwitchButton>
+        <ClockFace />
+        <InfoWrapper />
+      </ThemeProvider>
     </Wrapper>
   )
 }

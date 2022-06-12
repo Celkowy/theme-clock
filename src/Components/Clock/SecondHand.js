@@ -29,9 +29,9 @@ const SecondHand = styled.div`
     position: absolute;
     height: 4px;
     width: 4px;
-    background-color: ${props => (props.mode ? 'black' : 'white')};
+    background-color: ${props => (props.theme.mode ? 'black' : 'white')};
     border-radius: 50%;
-    border: 2px solid ${props => (props.mode ? 'red' : 'black')};
+    border: 2px solid ${props => (props.theme.mode ? 'red' : 'black')};
     transform: translate(-50%, -50%);
     transition: all 0.8s cubic-bezier(0.99, 0, 0.52, 1);
   }

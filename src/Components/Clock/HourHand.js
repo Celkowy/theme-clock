@@ -13,7 +13,7 @@ const slide = keyframes`
 const HourHand = styled.div`
   width: 2px;
   height: 30px;
-  background-color: ${props => (props.mode ? 'white' : 'black')};
+  background-color: ${props => (props.theme.mode ? 'white' : 'black')};
   position: absolute;
   top: 50%;
   left: 50%;
