@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import ClockFace from './Components/Clock/ClockFace'
+import SwitchButton from './Components/SwitchButton'
+import Wrapper from './Wrapper'
+import InfoWrapper from './Components/TimeInfo/InfoWrapper'
+import React, { useState } from 'react'
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${props => (props.mode ? 'white' : 'black')};
+    transition: all 0.6s cubic-bezier(.99,0,.52,1);
+    font-family: 'Mulish', sans-serif;
+  }
+`
 
 function App() {
+  const [mode, switchMode] = useState(true)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Wrapper>
+      <GlobalStyle mode={mode} />
+      <SwitchButton
+        onClick={() => {
+          switchMode(!mode)
+        }}
+        mode={mode}
+      >
+        {mode ? 'Dark mode' : 'Light mode'}
+      </SwitchButton>
+      <ClockFace mode={mode} />
+      <InfoWrapper mode={mode} />
+    </Wrapper>
+  )
 }
 
-export default App;
+export default App
