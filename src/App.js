@@ -20,18 +20,15 @@ function App() {
     mode: mode,
   }
 
+  function changeMode() {
+    switchMode(!mode)
+  }
+
   return (
     <Wrapper>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <SwitchButton
-          onClick={() => {
-            switchMode(!mode)
-          }}
-          mode={mode}
-        >
-          {mode ? 'Dark mode' : 'Light mode'}
-        </SwitchButton>
+        <SwitchButton onClick={changeMode}>{mode ? 'Dark mode' : 'Light mode'}</SwitchButton>
         <ClockFace />
         <InfoWrapper />
       </ThemeProvider>
