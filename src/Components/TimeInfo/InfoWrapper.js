@@ -33,8 +33,6 @@ function InfoWrapper(props) {
       })
   }, [])
 
-  console.log(timeData)
-
   return (
     <>
       {timeData && (
