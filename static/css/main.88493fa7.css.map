@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.88493fa7.css","mappings":"AAAA,KAIE,kBAAmB,CADnB,YAAa,CADb,YAAa,CAGb,sBAAuB,CACvB,QAAS,CACT,SAAU,CANV,WAOF","sources":["index.css"],"sourcesContent":["body {\n  width: 100vw;\n  height: 100vh;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin: 0;\n  padding: 0;\n}\n"],"names":[],"sourceRoot":""}
