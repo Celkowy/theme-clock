@@ -26,7 +26,7 @@ function InfoWrapper(props) {
   const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
   useEffect(() => {
-    fetch('http://worldtimeapi.org/api/timezone/Europe/Warsaw')
+    fetch('https://worldtimeapi.org/api/timezone/Europe/Warsaw')
       .then(response => response.json())
       .then(data => {
         changeData(data)
