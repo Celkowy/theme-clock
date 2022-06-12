@@ -26,16 +26,16 @@ function InfoWrapper() {
   const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
   const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-  const time = timeData && timeData.utc_datetime.slice(11, 16)
-  const day = timeData && weekDay[timeData.day_of_week]
-  const month = timeData && monthArr[parseInt(timeData.utc_datetime.slice(5, 7) - 1, 10)]
-  const dayOfMonth = timeData && parseInt(timeData.utc_datetime.slice(5, 7), 10)
+  const time = timeData && timeData.getHours() + ':' + timeData.getMinutes()
+  const day = timeData && weekDay[timeData.getDay()]
+  const month = timeData && monthArr[timeData.getMonth()]
+  const dayOfMonth = timeData && timeData.getDate()
 
   useEffect(() => {
     fetch('https://worldtimeapi.org/api/timezone/Europe/Warsaw')
       .then(response => response.json())
       .then(data => {
-        changeData(data)
+        changeData(new Date(data.utc_datetime))
       })
   }, [])
 
