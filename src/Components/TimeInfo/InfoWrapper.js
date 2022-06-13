@@ -26,7 +26,11 @@ function InfoWrapper() {
   const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
   const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-  const time = timeData && timeData.getHours() + ':' + timeData.getMinutes()
+  const time =
+    timeData &&
+    timeData.getHours() +
+      ':' +
+      `${timeData.getMinutes.toString().length === 1 ? `0${timeData.getMinutes()}` : timeData.getMinutes()}`
   const day = timeData && weekDay[timeData.getDay()]
   const month = timeData && monthArr[timeData.getMonth()]
   const dayOfMonth = timeData && timeData.getDate()

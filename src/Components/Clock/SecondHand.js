@@ -1,14 +1,14 @@
 import styled, { keyframes } from 'styled-components'
 
-const slide = keyframes`
- from {
-    transform: rotate(0deg);
-  }
+// const slide = keyframes`
+//  from {
+//     transform: rotate(0deg);
+//   }
 
-  to {
-    transform: rotate(360deg);
-  }
-`
+//   to {
+//     transform: rotate(360deg);
+//   }
+// `
 
 const SecondHand = styled.div`
   width: 2px;
@@ -20,8 +20,9 @@ const SecondHand = styled.div`
   left: 50%;
   border-radius: 5px;
   transform-origin: 0 0;
-  transform: translate(-50%, -50%);
-  animation: ${slide} 6s infinite linear;
+  transform: translate(-50%, 0) rotate(${props => props.a * 6}deg);
+
+  ${'' /* animation: ${slide} 6s infinite linear; */}
   transition: all 0.8s cubic-bezier(0.99, 0, 0.52, 1);
 
   &::after {
