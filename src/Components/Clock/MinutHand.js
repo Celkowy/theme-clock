@@ -1,14 +1,4 @@
-import styled, { keyframes } from 'styled-components'
-
-const slide = keyframes`
- from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-`
+import styled from 'styled-components'
 
 const MinuteHand = styled.div`
   width: 2px;
@@ -19,9 +9,8 @@ const MinuteHand = styled.div`
   left: 50%;
   border-radius: 5px;
   transform-origin: 0 0;
-  transform: translate(-50%, -50%);
-  animation: ${slide} 36s infinite linear;
-  transition: all 0.7s cubic-bezier(0.99, 0, 0.52, 1);
+  transform: translate(-50%, 0) rotate(${props => props.a * 0.1}deg);
+  transition: background-color 0.7s cubic-bezier(0.99, 0, 0.52, 1);
 `
 
 export default MinuteHand

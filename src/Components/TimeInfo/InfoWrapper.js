@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react'
 import Time from './Time'
 import Day from './Day'
 import Month from './Month'
@@ -20,29 +19,7 @@ const FlexContainer = styled.div`
   margin-top: 10px;
 `
 
-function InfoWrapper() {
-  const [timeData, changeData] = useState(null)
-
-  const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-  const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
-  const time =
-    timeData &&
-    timeData.getHours() +
-      ':' +
-      `${timeData.getMinutes.toString().length === 1 ? `0${timeData.getMinutes()}` : timeData.getMinutes()}`
-  const day = timeData && weekDay[timeData.getDay()]
-  const month = timeData && monthArr[timeData.getMonth()]
-  const dayOfMonth = timeData && timeData.getDate()
-
-  useEffect(() => {
-    fetch('https://worldtimeapi.org/api/timezone/Europe/Warsaw')
-      .then(response => response.json())
-      .then(data => {
-        changeData(new Date(data.utc_datetime))
-      })
-  }, [])
-
+function InfoWrapper({ time, day, month, dayOfMonth, timeData }) {
   return (
     <>
       {timeData && (
