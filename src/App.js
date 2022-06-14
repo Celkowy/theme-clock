@@ -31,7 +31,7 @@ function App() {
   }, [])
 
   const time =
-    (new Date().getHours() === 12 ? 12 : `${(new Date().getHours() % 12).toString().padStart(2, '0')}`) +
+    (new Date().getHours() === 0 ? 12 : `${new Date().getHours() % 12}`) +
     `:${new Date().getMinutes().toString().padStart(2, '0')}` +
     (new Date().getHours() > 12 ? ' PM' : ' AM')
   const day = weekDay[new Date().getDay()]
