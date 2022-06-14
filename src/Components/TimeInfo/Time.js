@@ -6,5 +6,9 @@ const Time = styled.div`
   color: ${props => (props.theme.mode ? 'black' : 'white')};
   transition: all 0.6s;
   font-weight: bold;
+
+  &::first-letter {
+    color: red;
+  }
 `
 export default Time
