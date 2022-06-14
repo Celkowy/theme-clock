@@ -6,7 +6,7 @@ const SwitchButton = styled.button`
   font-size: 18px;
   margin-top: 50px;
   maring-bottom: 50px;
-  border-radius: 5px;
+  border-radius: 10px;
   color: ${props => (props.theme.mode ? 'white' : 'black')};
   background-color: ${props => (props.theme.mode ? 'black' : 'white')};
   cursor: pointer;
