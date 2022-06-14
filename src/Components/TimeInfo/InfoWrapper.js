@@ -20,10 +20,28 @@ const FlexContainer = styled.div`
   margin-top: 15px;
 `
 
+const RedLetter = styled.div`
+  margin-right: 10px;
+  color: red;
+`
+
+const TimeFront = styled.div``
+
+const TimeConvention = styled.div``
+
 function InfoWrapper({ time, day, month, dayOfMonth }) {
+  const timeFront = time.slice(0, 4)
+  const redLetter = time.slice(4, 5)
+  const timeConvention = time.slice(5, 8)
+
   return (
     <WrapperInfo>
-      <Time>{time}</Time>
+      <Time>
+        <TimeFront>{timeFront}</TimeFront>
+        <RedLetter>{redLetter}</RedLetter>
+        <TimeConvention>{timeConvention}</TimeConvention>
+      </Time>
+
       <FlexContainer>
         <Day>{day}</Day>
         <Month>{month}</Month>
