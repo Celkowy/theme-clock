@@ -5,10 +5,11 @@ import DayOfMonth from './DayOfMonth'
 import styled from 'styled-components'
 
 const WrapperInfo = styled.div`
-  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
   border-radius: 5px;
   width: 100%;
-  padding: 15px 20px;
   font-size: 21px;
 `
 
@@ -16,23 +17,19 @@ const FlexContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 15px;
 `
 
-function InfoWrapper({ time, day, month, dayOfMonth, timeData }) {
+function InfoWrapper({ time, day, month, dayOfMonth }) {
   return (
-    <>
-      {timeData && (
-        <WrapperInfo>
-          <Time>{time}</Time>
-          <FlexContainer>
-            <Day>{day}</Day>
-            <Month>{month}</Month>
-            <DayOfMonth>{dayOfMonth}</DayOfMonth>
-          </FlexContainer>
-        </WrapperInfo>
-      )}
-    </>
+    <WrapperInfo>
+      <Time>{time}</Time>
+      <FlexContainer>
+        <Day>{day}</Day>
+        <Month>{month}</Month>
+        <DayOfMonth>{dayOfMonth}</DayOfMonth>
+      </FlexContainer>
+    </WrapperInfo>
   )
 }
 export default InfoWrapper

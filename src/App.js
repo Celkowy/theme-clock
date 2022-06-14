@@ -15,39 +15,28 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   const [mode, switchMode] = useState(true)
-  const [timeData, changeData] = useState(null)
-  const [seconds, updateSeconds] = useState(timeData && timeData.getSeconds())
-  const [minutes, updateMinutes] = useState(timeData && timeData.getMinutes())
-  const [hours, updateHours] = useState(timeData && timeData.getHours())
+
+  const [actualTime, setActualTime] = useState(new Date())
 
   const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
   const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-  function updateTime() {
-    updateSeconds(prev => prev + 1)
-    updateMinutes(prev => prev + 1)
-    updateHours(prev => prev + 1)
-  }
-
   useEffect(() => {
-    const interval = setInterval(() => updateTime(), 1000)
+    const interval = setInterval(() => {
+      setActualTime(new Date())
+    }, 1000)
     return () => {
       clearInterval(interval)
     }
   }, [])
 
-  useEffect(() => {
-    fetch('https://worldtimeapi.org/api/timezone/Europe/Warsaw')
-      .then(response => response.json())
-      .then(data => {
-        changeData(new Date(data.utc_datetime))
-      })
-  }, [])
-
-  const time = timeData && timeData.getHours() + `:${timeData.getMinutes().toString().padStart(2, '0')}`
-  const day = timeData && weekDay[timeData.getDay()]
-  const month = timeData && monthArr[timeData.getMonth()]
-  const dayOfMonth = timeData && timeData.getDate()
+  const time =
+    (new Date().getHours() === 12 ? 12 : new Date().getHours() % 12) +
+    `:${new Date().getMinutes().toString().padStart(2, '0')}` +
+    (new Date().getHours() > 12 ? ' PM' : ' AM')
+  const day = weekDay[new Date().getDay()]
+  const month = monthArr[new Date().getMonth()]
+  const dayOfMonth = new Date().getDate()
 
   const theme = {
     mode: mode,
@@ -61,9 +50,9 @@ function App() {
     <Wrapper>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
+        <InfoWrapper time={time} day={day} month={month} dayOfMonth={dayOfMonth} />
+        <ClockFace seconds={actualTime.getSeconds() + actualTime.getMinutes() * 60 + actualTime.getHours() * 60 * 60} />
         <SwitchButton onClick={changeMode}>{mode ? 'Dark mode' : 'Light mode'}</SwitchButton>
-        <ClockFace seconds={seconds} minutes={minutes} hours={hours} />
-        <InfoWrapper time={time} day={day} month={month} dayOfMonth={dayOfMonth} timeData={timeData} />
       </ThemeProvider>
     </Wrapper>
   )
