@@ -7,6 +7,7 @@ const HourHand = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 4;
   border-radius: 5px;
   transform-origin: top center;
   transform: rotate(${({ seconds }) => (seconds * 360) / 12 / 60 / 60}deg);
