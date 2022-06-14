@@ -12,9 +12,7 @@ const Dot = styled.div`
   border-radius: 50%;
   border: 3px solid ${props => (props.theme.mode ? 'red' : 'black')};
   transform: translate(-50%, -50%);
-  -webkit-box-shadow: 0px 0px 24px 0px rgba(66, 68, 90, 1);
-  -moz-box-shadow: 0px 0px 24px 0px rgba(66, 68, 90, 1);
-  box-shadow: 0px 0px 20px 5px rgba(66, 68, 90, 1);
+  box-shadow: ${props => (props.theme.mode ? 'unset' : '0px 0px 24px 5px rgba(66, 68, 90, 1)')};
   transition: all 0.7s cubic-bezier(0.99, 0, 0.52, 1);
 `
 

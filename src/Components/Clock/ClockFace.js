@@ -10,8 +10,6 @@ const StyledFace = styled.div`
   border-radius: 50%;
   position: relative;
   transform: rotate(180deg);
-  -webkit-box-shadow: 0px 0px 24px 0px rgba(66, 68, 90, 1);
-  -moz-box-shadow: 0px 0px 24px 0px rgba(66, 68, 90, 1);
   box-shadow: 0px 0px 24px 0px rgba(66, 68, 90, 1);
   transition: all 0.6s cubic-bezier(0.99, 0, 0.52, 1);
 `
