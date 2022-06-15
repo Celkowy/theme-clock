@@ -113,7 +113,7 @@ function App() {
 
   const showSettings = settings ? (
     <SettingsContainer>
-      <SettingsText>{'Change seconds hand animation'}</SettingsText>
+      <SettingsText>{'Change clock needle animation'}</SettingsText>
 
       <NeedleMode
         onClick={() => {
