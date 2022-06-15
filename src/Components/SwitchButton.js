@@ -11,7 +11,6 @@ const SwitchButton = styled.button`
   background-color: ${props => (props.theme.mode ? 'black' : 'white')};
   cursor: pointer;
   border: none;
-  font-weight: bold;
   transition: color 0.6s cubic-bezier(0.99, 0, 0.52, 1), background-color 0.6s cubic-bezier(0.99, 0, 0.52, 1),
     transform 0.3s ease;
 

@@ -10,8 +10,9 @@ const SecondHand = styled.div`
   left: 50%;
   border-radius: 5px;
   transform-origin: top center;
-  transform: rotate(${({ seconds }) => (seconds * 360) / 60}deg);
-  transition: transform 0s linear;
+  transform: rotate(${({ seconds }) => ((seconds * 360) / 60) % 360}deg);
+
+  transition: transform ${props => (props.changeAnimation ? '0s' : '1s')} linear;
 `
 
 export default SecondHand

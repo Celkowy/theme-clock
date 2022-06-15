@@ -5,8 +5,12 @@ import DayOfMonth from './DayOfMonth'
 import styled from 'styled-components'
 
 const WrapperInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 50px;
   margin-left: 20px;
+
   margin-right: 20px;
   border-radius: 5px;
   width: 100%;
@@ -15,6 +19,7 @@ const WrapperInfo = styled.div`
 
 const FlexContainer = styled.div`
   display: flex;
+  width: 225px;
   justify-content: space-evenly;
   align-items: center;
   margin-top: 15px;
@@ -29,15 +34,17 @@ const TimeFront = styled.div``
 
 const TimeConvention = styled.div``
 
-function InfoWrapper({ time, day, month, dayOfMonth }) {
-  const timeFront = time.slice(0, 4)
-  let redLetter = time.length === 8 ? `${time.slice(4, 5)}` : `${time.slice(3, 4)}`
-  const timeConvention = time.slice(5, 8)
+const MinutesBeggining = styled.div``
+
+function InfoWrapper({ minutes, hours, timeConvention, day, month, dayOfMonth }) {
+  const redLetter = minutes.slice(minutes.length - 1, minutes.length)
+  const minutesBeggining = minutes.slice(0, minutes.length - 1)
 
   return (
     <WrapperInfo>
       <Time>
-        <TimeFront>{timeFront}</TimeFront>
+        <TimeFront>{hours}</TimeFront>
+        <MinutesBeggining>{minutesBeggining}</MinutesBeggining>
         <RedLetter>{redLetter}</RedLetter>
         <TimeConvention>{timeConvention}</TimeConvention>
       </Time>

@@ -14,10 +14,10 @@ const StyledFace = styled.div`
   transition: all 0.6s cubic-bezier(0.99, 0, 0.52, 1);
 `
 
-function ClockFace({ seconds }) {
+function ClockFace({ seconds, changeAnimation }) {
   return (
     <StyledFace>
-      <SecondHand seconds={seconds} />
+      <SecondHand seconds={seconds} changeAnimation={changeAnimation} />
       <MinuteHand seconds={seconds} />
       <HourHand seconds={seconds} />
       <Dot />
