@@ -86,7 +86,7 @@ function App() {
 
   const hours = new Date().getHours() % 12 === 0 ? '12' : `${new Date().getHours() % 12}`
   const minutes = `:${new Date().getMinutes().toString().padStart(2, '0')}`
-  const timeConvention = new Date().getHours() >= 12 ? ' PM' : ' AM'
+  let dayPhase = timeOfDay(new Date().getHours())
 
   const day = weekDay[new Date().getDay()]
   const month = monthArr[new Date().getMonth()]
@@ -98,6 +98,17 @@ function App() {
 
   function changeMode() {
     switchMode(!mode)
+  }
+
+  function timeOfDay(actualHour) {
+    if (actualHour >= 12) {
+      return ' PM'
+    } else if (actualHour < 12) {
+      return ' AM'
+    }
+    if (actualHour === 24) {
+      return ' AM'
+    }
   }
 
   const showSettings = settings ? (
@@ -121,7 +132,7 @@ function App() {
         <InfoWrapper
           minutes={minutes}
           hours={hours}
-          timeConvention={timeConvention}
+          dayPhase={dayPhase}
           day={day}
           month={month}
           dayOfMonth={dayOfMonth}

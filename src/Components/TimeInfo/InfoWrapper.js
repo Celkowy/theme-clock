@@ -32,11 +32,11 @@ const RedLetter = styled.div`
 
 const TimeFront = styled.div``
 
-const TimeConvention = styled.div``
+const DayPhase = styled.div``
 
 const MinutesBeggining = styled.div``
 
-function InfoWrapper({ minutes, hours, timeConvention, day, month, dayOfMonth }) {
+function InfoWrapper({ minutes, hours, dayPhase, day, month, dayOfMonth }) {
   const redLetter = minutes.slice(minutes.length - 1, minutes.length)
   const minutesBeggining = minutes.slice(0, minutes.length - 1)
 
@@ -46,7 +46,7 @@ function InfoWrapper({ minutes, hours, timeConvention, day, month, dayOfMonth })
         <TimeFront>{hours}</TimeFront>
         <MinutesBeggining>{minutesBeggining}</MinutesBeggining>
         <RedLetter>{redLetter}</RedLetter>
-        <TimeConvention>{timeConvention}</TimeConvention>
+        <DayPhase>{dayPhase}</DayPhase>
       </Time>
 
       <FlexContainer>
