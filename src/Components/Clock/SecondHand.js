@@ -5,7 +5,7 @@ const SecondHand = styled.div`
   height: 90px;
   background-color: red;
   position: absolute;
-  z-index: 1;
+  z-index: 5;
   top: 50%;
   left: 50%;
   border-radius: 5px;

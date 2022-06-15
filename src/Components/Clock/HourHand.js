@@ -2,12 +2,12 @@ import styled from 'styled-components'
 
 const HourHand = styled.div`
   width: 3px;
-  height: 40px;
+  height: 50px;
   background-color: ${props => (props.theme.mode ? 'black' : 'white')};
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 4;
+  z-index: 3;
   border-radius: 5px;
   transform-origin: top center;
   transform: rotate(${({ seconds }) => (seconds * 360) / 12 / 60 / 60}deg);
