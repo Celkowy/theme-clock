@@ -31,7 +31,7 @@ const TimeConvention = styled.div``
 
 function InfoWrapper({ time, day, month, dayOfMonth }) {
   const timeFront = time.slice(0, 4)
-  const redLetter = time.slice(4, 5)
+  let redLetter = time.length === 8 ? `${time.slice(4, 5)}` : `${time.slice(3, 4)}`
   const timeConvention = time.slice(5, 8)
 
   return (
