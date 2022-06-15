@@ -17,9 +17,13 @@ const StyledFace = styled.div`
 function ClockFace({ seconds, changeAnimation }) {
   return (
     <StyledFace>
-      <SecondHand seconds={seconds} changeAnimation={changeAnimation} />
-      <MinuteHand seconds={seconds} />
-      <HourHand seconds={seconds} />
+      <SecondHand
+        seconds={seconds}
+        changeAnimation={changeAnimation}
+        style={{ transform: `rotate(${(seconds * 360) / 60}deg)` }}
+      />
+      <MinuteHand seconds={seconds} style={{ transform: `rotate(${((seconds * 360) / 60 / 60) % 360}deg)` }} />
+      <HourHand seconds={seconds} style={{ transform: `rotate(${((seconds * 360) / 12 / 60 / 60) % 360}deg)` }} />
       <Dot />
     </StyledFace>
   )
