@@ -1,3 +1,10 @@
+# Theme clock (React & Styled Components)
 
-### `npm install`
-### `npm start`
+Clock application with dark mode and seconds clock hand animation (automatic and quartz)
+
+## Usage
+
+```
+npm install
+npm start
+```
